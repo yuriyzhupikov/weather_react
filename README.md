@@ -1,8 +1,8 @@
 # Rewrote the project https://github.com/Milan-960/Weather-app 
 
-###added components: `SearchCity`, `CartInfoCityWeather`
-###added hook: `useHttp`
-###added `redux`
+### added components: `SearchCity`, `CartInfoCityWeather`
+### added hook: `useHttp`
+### added `redux`
 
 In the project directory, you can run:
 ### `npm install`
