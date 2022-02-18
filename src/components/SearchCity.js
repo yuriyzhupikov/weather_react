@@ -1,14 +1,23 @@
-import React from "react";
+import React, {useState} from "react";
+import {useDispatch} from "react-redux";
+import {loadDataWeather} from "../redux/actions";
+import {useHttp} from "../hooks/httpHook";
 
-export const SearchCity = (props) => {
+export const SearchCity = () => {
+
+    const dispatch = useDispatch();
+    const {request} = useHttp();
+
+    const [query, setQuery] = useState('');
 
     const handlerOnChangeSearch = (e) => {
-        props.onChange(e.target.value);
+        setQuery(e.target.value);
     }
 
     const handlerOnKeyPressSearch = (e) => {
         if (e.key === "Enter") {
-            props.onKeyPress();
+            dispatch(loadDataWeather(request, query));
+            setQuery('');
         }
     }
 
@@ -17,7 +26,8 @@ export const SearchCity = (props) => {
             <input
                 type="text"
                 placeholder="Введите название города"
-                value={props.value}
+                value={query}
+                name="title"
                 onChange={handlerOnChangeSearch}
                 onKeyPress={handlerOnKeyPressSearch}
             />
